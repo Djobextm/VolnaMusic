@@ -1,73 +1,130 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Волна Music</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>🌊 Волна Music</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- SoundCloud Widget API -->
     <script src="https://w.soundcloud.com/player/api.js"></script>
 </head>
+
 <body>
-    <div class="app-container">
-        <aside class="sidebar glass">
-            <div class="logo">🌊 Волна<span>.</span></div>
-            <nav class="side-menu">
-                <div class="side-link active" id="menu-home"><i data-lucide="home"></i> Главная</div>
-                <div class="side-link" id="menu-search"><i data-lucide="search"></i> Поиск</div>
-                <div class="side-link" id="menu-likes"><i data-lucide="heart"></i> Коллекция</div>
-            </nav>
-            <div class="wave-box" id="wave-desktop">
-                <div class="wave-sphere"></div>
-                <p>Моя волна</p>
+<div class="app-container">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar glass">
+        <div class="logo">🌊 Волна<span>.</span></div>
+
+        <nav class="side-menu">
+            <div class="side-link active">
+                <i data-lucide="home"></i>
+                <span>Главная</span>
             </div>
-        </aside>
-
-        <main class="main-content">
-            <header class="top-nav glass">
-                <div class="search-wrap">
-                    <i data-lucide="search"></i>
-                    <input type="text" id="sc-search" placeholder="Треки, артисты, жанры...">
-                </div>
-            </header>
-
-            <div class="scroll-area">
-                <h2 id="view-title">Рекомендации</h2>
-                <div class="track-grid" id="track-container">
-                    </div>
+            <div class="side-link">
+                <i data-lucide="search"></i>
+                <span>Поиск</span>
             </div>
-        </main>
-
-        <footer class="player-bar glass">
-            <div class="p-info">
-                <img src="" id="p-art" class="p-art-img" alt="">
-                <div class="p-meta">
-                    <div id="p-title" class="p-title">Волна Music</div>
-                    <div id="p-artist" class="p-artist">Выбери трек</div>
-                </div>
+            <div class="side-link">
+                <i data-lucide="heart"></i>
+                <span>Коллекция</span>
             </div>
-
-            <div class="p-controls">
-                <div class="p-btns">
-                    <button class="p-main" id="play-pause"><i data-lucide="play"></i></button>
-                </div>
-                <div class="p-progress-wrap" id="progress-container">
-                    <div class="p-bar-bg"><div id="progress-fill"></div></div>
-                </div>
-            </div>
-        </footer>
-
-        <nav class="mobile-nav glass">
-            <div class="m-item" onclick="location.reload()"><i data-lucide="home"></i></div>
-            <div class="m-item" onclick="document.getElementById('sc-search').focus()"><i data-lucide="search"></i></div>
-            <div class="m-wave" id="wave-mobile"><div class="wave-dot"></div></div>
-            <div class="m-item"><i data-lucide="heart"></i></div>
-            <div class="m-item"><i data-lucide="user"></i></div>
         </nav>
-    </div>
 
-    <iframe id="sc-widget" src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/293&show_artwork=false" style="display:none"></iframe>
+        <div class="wave-box" id="wave-desktop">
+            <div class="wave-sphere"></div>
+            <p>Моя волна</p>
+        </div>
+    </aside>
 
-    <script src="script.js"></script>
+    <!-- ================= MAIN ================= -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="top-nav glass">
+            <div class="search-wrap">
+                <i data-lucide="search"></i>
+                <input
+                    id="sc-search"
+                    type="text"
+                    placeholder="Треки, артисты, жанры…" />
+            </div>
+        </header>
+
+        <!-- CONTENT -->
+        <section class="scroll-area">
+            <h2 id="view-title">Рекомендации</h2>
+            <div class="track-grid" id="track-container">
+                <!-- tracks here -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= PLAYER ================= -->
+    <footer class="player-bar glass">
+
+        <div class="p-info">
+            <img id="p-art" class="p-art-img" src="" alt="" />
+            <div class="p-meta">
+                <div id="p-title" class="p-title">Волна Music</div>
+                <div id="p-artist" class="p-artist">Выбери трек</div>
+            </div>
+        </div>
+
+        <div class="p-controls">
+            <button class="p-main" id="play-pause">
+                <i data-lucide="play"></i>
+            </button>
+
+            <div class="p-progress-wrap" id="progress-container">
+                <div class="p-bar-bg">
+                    <div id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- ================= MOBILE NAV ================= -->
+    <nav class="mobile-nav glass">
+        <div class="m-item" onclick="location.reload()">
+            <i data-lucide="home"></i>
+        </div>
+
+        <div class="m-item" onclick="document.getElementById('sc-search').focus()">
+            <i data-lucide="search"></i>
+        </div>
+
+        <div class="m-wave" id="wave-mobile"></div>
+
+        <div class="m-item">
+            <i data-lucide="heart"></i>
+        </div>
+
+        <div class="m-item">
+            <i data-lucide="user"></i>
+        </div>
+    </nav>
+
+</div>
+
+<!-- ================= HIDDEN PLAYER ================= -->
+<iframe
+    id="sc-widget"
+    src="https://w.soundcloud.com/player/?url=https://soundcloud.com"
+    allow="autoplay"
+    style="display:none">
+</iframe>
+
+<!-- ================= SCRIPT ================= -->
+<script src="script.js"></script>
 </body>
 </html>
