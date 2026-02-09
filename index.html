@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Волна Музыка — Стриминг</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar glass">
+            <div class="logo">🌊 Волна<span>.</span></div>
+            <nav class="side-menu">
+                <div class="side-link active" onclick="loadView('hits')"><i data-lucide="home"></i> Главная</div>
+                <div class="side-link" onclick="loadView('phonk')"><i data-lucide="zap"></i> Phonk</div>
+                <div class="side-link" onclick="showLikes()"><i data-lucide="heart"></i> Коллекция</div>
+            </nav>
+            <div class="wave-box" id="wave-desktop">
+                <div class="wave-sphere"></div>
+                <p>Моя волна</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-nav glass">
+                <div class="search-wrap">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="sc-search" placeholder="Треки или исполнители...">
+                </div>
+                <div class="user-avatar"></div>
+            </header>
+
+            <div class="scroll-area">
+                <h2 id="view-title">Главная</h2>
+                <div class="track-grid" id="track-container">
+                    </div>
+            </div>
+        </main>
+
+        <nav class="mobile-nav glass">
+            <div class="m-item active" onclick="loadView('hits')"><i data-lucide="home"></i></div>
+            <div class="m-item" onclick="document.getElementById('sc-search').focus()"><i data-lucide="search"></i></div>
+            <div class="m-wave" id="wave-mobile"><div class="wave-dot"></div></div>
+            <div class="m-item" onclick="showLikes()"><i data-lucide="heart"></i></div>
+            <div class="m-item"><i data-lucide="user"></i></div>
+        </nav>
+
+        <footer class="player-bar glass">
+            <div class="p-info">
+                <img src="" id="p-art" class="p-art-img">
+                <div class="p-meta">
+                    <div id="p-title" class="p-title">Волна</div>
+                    <div id="p-artist" class="p-artist">Выбери трек</div>
+                </div>
+            </div>
+
+            <div class="p-controls">
+                <div class="p-btns">
+                    <button class="p-sub"><i data-lucide="shuffle"></i></button>
+                    <button class="p-sub" id="p-prev"><i data-lucide="skip-back"></i></button>
+                    <button class="p-main" id="play-pause"><i data-lucide="play"></i></button>
+                    <button class="p-sub" id="p-next"><i data-lucide="skip-forward"></i></button>
+                    <button class="p-sub"><i data-lucide="repeat"></i></button>
+                </div>
+                <div class="p-progress-wrap">
+                    <span class="p-time" id="curr-time">0:00</span>
+                    <div class="p-bar-bg" id="progress-container"><div id="progress-fill"></div></div>
+                    <span class="p-time" id="dur-time">0:00</span>
+                </div>
+            </div>
+
+            <div class="p-vol">
+                <i data-lucide="volume-2"></i>
+                <div class="v-bar-bg" id="vol-container"><div id="vol-fill"></div></div>
+            </div>
+        </footer>
+    </div>
+
+    <iframe id="sc-widget" src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/293&show_artwork=false" style="display:none"></iframe>
+
+    <script src="script.js"></script>
+</body>
+</html>
